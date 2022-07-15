@@ -237,28 +237,27 @@ namespace VariablesDataTypes
         //Console.WriteLine(t!=f);
         //Console.ReadLine();
 
-        private static void incomeProgram()
+        private static void incomeProgram() //incomeCOmparison i
         {
-            //income program  S
             Console.WriteLine("income comparison program");
             Console.WriteLine("person 1 details:");
             Console.WriteLine("enter hourly income:");
             string person1Rate = Console.ReadLine();
             Console.WriteLine("enter hours worked per week:");
             string person1Hours = Console.ReadLine();
-            decimal person1Salary = Convert.ToDecimal(person1Hours) * Convert.ToDecimal(person1Rate);
+            decimal person1Salary = Convert.ToDecimal(person1Hours) * Convert.ToDecimal(person1Rate) * 52;
             //person 2
             Console.WriteLine("person 2 details:");
             Console.WriteLine("enter hourly income:");
             string person2Rate = Console.ReadLine();
             Console.WriteLine("enter hours worked per week:");
             string person2Hours = Console.ReadLine();
-            decimal person2Salary = Convert.ToDecimal(person2Hours) * Convert.ToDecimal(person2Rate);
+            decimal person2Salary = Convert.ToDecimal(person2Hours) * Convert.ToDecimal(person2Rate) * 52;
             //
             Console.WriteLine("Press Enter to view results");
             Console.ReadLine(); // waits for enter key
-            Console.WriteLine("Person 1 Salary: " + person1Salary);
-            Console.WriteLine("Person 2 Salary: " + person2Salary);
+            Console.WriteLine("Person 1 Salary: " + String.Format("{0:C}", person1Salary));
+            Console.WriteLine("Person 2 Salary: " + String.Format("{0:C}", person2Salary));
             //end of program
             Console.WriteLine((person1Salary > person2Salary ? "First Person" : "Second Person") + " Makes More. Press Enter to close this window.");
             Console.ReadLine();
