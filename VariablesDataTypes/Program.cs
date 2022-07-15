@@ -10,15 +10,22 @@ namespace VariablesDataTypes
     {
         static void Main()
         {
+
             Console.WriteLine("Which program would you like to Run:");
-            Console.WriteLine("For Car Insurance, enter c");
+            Console.WriteLine("For Basic Operators, enter b");
+            Console.WriteLine("For Car Insurance using ternary operators, enter c");
             Console.WriteLine("For Daily Report, enter d");
             Console.WriteLine("For Income Comparison, enter i");
+            Console.WriteLine("For Logical operators using if-else, enter l");
+            Console.WriteLine("For Shipping Express, enter s");
             char myChoice = Convert.ToChar(Console.ReadLine());
             Console.WriteLine("=============================================================");
 
             switch (myChoice)
             {
+                case 'b':
+                    basicMath();
+                    break;
                 case 'c':
                     carInsurance();
                     break;
@@ -28,6 +35,12 @@ namespace VariablesDataTypes
                 case 'i':
                     incomeProgram();
                     break;
+                case 'l':
+                    logicalProgram();
+                    break;
+                case 's':
+                    shippingExpress();
+                    break;
                 default:
                     Console.WriteLine("fatal error! Shutting down.");
                     Console.ReadLine();
@@ -36,6 +49,70 @@ namespace VariablesDataTypes
             }
         }
 
+        private static void shippingExpress()
+        {
+            Console.WriteLine("Welcome to Shipping Express. Please Follow instructions to begin.");
+            Console.WriteLine("Enter package weight in kg");
+            byte weight = Convert.ToByte(Console.ReadLine());
+            if (weight > 50)
+            {
+                Console.WriteLine("Too Heavy for us sorry.");
+                endMessage();
+                return;
+            }
+            Console.WriteLine("Enter Width in centimeters");
+            byte width = Convert.ToByte(Console.ReadLine());
+            Console.WriteLine("Enter length in centimeters");
+            byte length = Convert.ToByte(Console.ReadLine());
+            Console.WriteLine("Enter height in centimeters");
+            byte height = Convert.ToByte(Console.ReadLine());
+            if (width+length+height > 50)
+            {
+                Console.WriteLine("Too Big for us sorry.");
+                endMessage();
+                return;
+            }
+            decimal quote = (width * length * height * weight) / 1000; //dividing  by 1000 is a little more reasonable than 100
+            string quoteString = string.Format("{0:C}", quote);
+            Console.WriteLine("Estimated Total is " + quoteString);
+            Console.WriteLine("Thank you!");
+            endMessage();
+        }
+
+        private static void logicalProgram()
+        {
+            //if else statements
+            if (true){
+                Console.WriteLine("soemthing was true");
+            }
+            else { }
+
+            // !=
+            Console.WriteLine("fred" != "fred");
+
+            // >
+            if(5<6 && 5 > 3)
+            {
+                Console.WriteLine("five is between 3 and 6 apparently");
+            }
+            else { }
+
+            Console.WriteLine("What is the room temp in Fahrenheit?");
+            byte currentTemp = Convert.ToByte(Console.ReadLine());
+
+            if (currentTemp>72)
+            {
+                Console.WriteLine("a bit warm");
+            }
+            else if (currentTemp < 72)
+            {
+                Console.WriteLine("a bit cool");
+            }
+            else { Console.WriteLine("exactly room temp"); }
+
+            endMessage();
+        }
+        
 
         private static void carInsurance() {
 
@@ -51,8 +128,7 @@ namespace VariablesDataTypes
             Console.WriteLine("Hit enter to see if you qualify");
             Console.ReadLine();
             Console.WriteLine(age > 15 && !dui && tickets <= 3 ? "You Qualify! An Agent has been assigned and will call you in shortly." : "I'm sorry. This isn't a good fit. Try Progressive or something. They'll take anyone.");
-            Console.WriteLine("Hit enter to close this window.");
-            Console.ReadLine();
+            endMessage();
         }
 
         ////boolean
@@ -92,31 +168,32 @@ namespace VariablesDataTypes
         }
 
 
-        ////basic operations O
-        //Console.WriteLine("Input a number to multiply by 50");
-        ////combined read and write onto one line:
-        //Console.WriteLine(Convert.ToInt32(Console.ReadLine()) * 50);
-        //Console.WriteLine("Input a number to add to 25");
-        //Console.WriteLine(Convert.ToInt32(Console.ReadLine()) * 25);
-        //Console.WriteLine("Input a number to divide by 12.5");
-        //Console.WriteLine(Convert.ToDecimal(Console.ReadLine()) / 12.5m);
-        //Console.WriteLine("Input a number to check if greater than 50");
-        //Console.WriteLine(Convert.ToInt32(Console.ReadLine()) > 50);
-        //Console.WriteLine("Input a number to divide by 7 and print remainder");
-        //Console.WriteLine(Convert.ToDecimal(Console.ReadLine()) % 7);
-        ////end of program
-        //Console.WriteLine("thats all");
-        //Console.ReadLine();
+        private static void basicMath()
+        {
+            //basic operations O
+            Console.WriteLine("Input a number to multiply by 50");
+            //combined read and write onto one line:
+            Console.WriteLine(Convert.ToInt32(Console.ReadLine()) * 50);
+            Console.WriteLine("Input a number to add to 25");
+            Console.WriteLine(Convert.ToInt32(Console.ReadLine()) * 25);
+            Console.WriteLine("Input a number to divide by 12.5");
+            Console.WriteLine(Convert.ToDecimal(Console.ReadLine()) / 12.5m);
+            Console.WriteLine("Input a number to check if greater than 50");
+            Console.WriteLine(Convert.ToInt32(Console.ReadLine()) > 50);
+            Console.WriteLine("Input a number to divide by 7 and print remainder");
+            Console.WriteLine(Convert.ToDecimal(Console.ReadLine()) % 7);
+            endMessage();
+        }
 
-        ////Some math M
-        //Console.WriteLine("6 + 2 = " + (6 + 2));
-        //Console.WriteLine("6 - 2 = " + (6 - 2));
-        //Console.WriteLine("6 x 2 = " + (6 * 2));
-        //Console.WriteLine("6 / 2 = " + (6 / 2));
-        //int product = 10 * 5;
-        //Console.WriteLine(product);
+            ////Some math M
+            //Console.WriteLine("6 + 2 = " + (6 + 2));
+            //Console.WriteLine("6 - 2 = " + (6 - 2));
+            //Console.WriteLine("6 x 2 = " + (6 * 2));
+            //Console.WriteLine("6 / 2 = " + (6 / 2));
+            //int product = 10 * 5;
+            //Console.WriteLine(product);
 
-        private static void dailyReport()
+            private static void dailyReport()
         {
             //DAILY REPORT PROMPTS D
             Console.WriteLine("The Tech Academy");
@@ -142,6 +219,12 @@ namespace VariablesDataTypes
             //Console.ReadLine();
 
 
+
+        private static void endMessage()
+        {
+            Console.WriteLine("Hit enter to close this window.");
+            Console.ReadLine();
+        }
 
         } //end class Program
 }
