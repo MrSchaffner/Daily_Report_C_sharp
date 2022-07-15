@@ -17,6 +17,7 @@ namespace VariablesDataTypes
             Console.WriteLine("For Daily Report, enter d");
             Console.WriteLine("For Income Comparison, enter i");
             Console.WriteLine("For Logical operators using if-else, enter l");
+            Console.WriteLine("for Rock Paper Scissors using do-while, enter r");
             Console.WriteLine("For Shipping Express, enter s");
             char myChoice = Convert.ToChar(Console.ReadLine());
             Console.WriteLine("=============================================================");
@@ -38,6 +39,9 @@ namespace VariablesDataTypes
                 case 'l':
                     logicalProgram();
                     break;
+                case 'r':
+                    rockPaperScissors();
+                    break;
                 case 's':
                     shippingExpress();
                     break;
@@ -48,6 +52,99 @@ namespace VariablesDataTypes
 
             }
         }
+
+        private static void powerOn()
+        {
+            bool power = false;
+
+            while (!power)
+            {
+                Console.WriteLine("it's off still. type \"start\" to start");
+                string powerString = Console.ReadLine();
+                if (powerString == "start")
+                    power = true;
+            }
+        }
+
+        private static void rockPaperScissors() //uses a do-while loop
+        {
+
+            powerOn(); // does a simple while loop
+
+            byte totalGames = 3;
+            byte gamesPlayed = 0;
+            byte wins = 0;
+            byte losses = 0;
+            Random rnd = new Random();
+
+            do
+            {
+                int opponentThrow = rnd.Next(4); //1 = r, 2 = p, 3 = s
+                Console.WriteLine("You are playing Rock Paper Scissors. Enter r, p, or s to throw.");
+                char yourThrow = Convert.ToChar(Console.ReadLine());
+                gamesPlayed++;
+                switch (yourThrow)
+                {
+                    case 'r':
+                        if (opponentThrow == 1)
+                        {
+                            Console.WriteLine("Rock hits rock. You tie.");
+                        }
+                        else if (opponentThrow == 2)
+                        {
+                            Console.WriteLine("Paper beats your Rock. you Lose.");
+                            losses++;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Rock breaks scissors. You win!");
+                            wins++;
+                        }
+                        break;
+                    case 'p':
+                        if (opponentThrow == 1)
+                        {
+                            Console.WriteLine("Paper surrounds rock. You Win!");
+                            wins++;
+                        }
+                        else if (opponentThrow == 2)
+                        {
+                            Console.WriteLine("Paper hits paper. you tie.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Scissors cut paper. You Lose");
+                            losses++;
+                        }
+                        break;
+                    case 's':
+                        if (opponentThrow == 1)
+                        {
+                            Console.WriteLine("Rock breaks scissors. You lose.");
+                            losses++;
+                        }
+                        else if (opponentThrow == 2)
+                        {
+                            Console.WriteLine("Scissors cut paper. You Win.");
+                            wins++;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Scissors scrapes scissors. You tie.");
+                        }
+                        break;
+                    default:
+                        gamesPlayed--;
+                        Console.WriteLine("Wrong symbol entered. try again.");
+                        break;
+                }
+
+            } while (gamesPlayed < totalGames);
+
+            Console.WriteLine("\n" + gamesPlayed + " Games played. Result: " + wins + " Wins " + losses + " Losses " + (gamesPlayed-wins-losses) + " Ties");
+            endMessage();
+        }
+
 
         private static void shippingExpress()
         {
@@ -222,6 +319,7 @@ namespace VariablesDataTypes
 
         private static void endMessage()
         {
+            Console.WriteLine("=============================================================");
             Console.WriteLine("Hit enter to close this window.");
             Console.ReadLine();
         }
