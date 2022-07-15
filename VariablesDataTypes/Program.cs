@@ -8,16 +8,67 @@ namespace VariablesDataTypes
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
+            Console.WriteLine("Which program would you like to Run:");
+            Console.WriteLine("For Car Insurance, enter c");
+            Console.WriteLine("For Income Comparison, enter i");
+            char myChoice = Convert.ToChar(Console.ReadLine());
+            Console.WriteLine("=============================================================");
 
-            //income program
+            switch (myChoice)
+            {
+                case 'c':
+                    carInsurance();
+                    break;
+                case 'i':
+                    incomeProgram();
+                    break;
+                default:
+                    Console.WriteLine("fatal error! Shutting down.");
+                    Console.ReadLine();
+                    break;
+
+            }
+        }
+
+
+        private static void carInsurance() {
+
+            //car insurance approval
+            Console.WriteLine("We will ask a few questions to determine your eligibility for our Premier Program. hit enter to continue.");
+            Console.ReadLine();
+            Console.WriteLine("Enter age");
+            byte age = Convert.ToByte(Console.ReadLine());
+            Console.WriteLine("You have DUIs on you record? Enter true or false");
+            bool dui = Convert.ToBoolean(Console.ReadLine());
+            Console.WriteLine("How many moving violations in the last 5 years?");
+            byte tickets = Convert.ToByte(Console.ReadLine());
+            Console.WriteLine("Hit enter to see if you qualify");
+            Console.ReadLine();
+            Console.WriteLine(age > 15 && !dui && tickets <= 3 ? "You Qualify! An Agent has been assigned and will call you in shortly." : "I'm sorry. This isn't a good fit. Try Progressive or something. They'll take anyone.");
+            Console.WriteLine("Hit enter to close this window.");
+            Console.ReadLine();
+        }
+
+        ////boolean
+        //bool t = true;
+        //bool f = false;
+        //Console.WriteLine(t&&t);
+        //Console.WriteLine(t||f);
+        //Console.WriteLine(t==t);
+        //Console.WriteLine(t!=f);
+        //Console.ReadLine();
+
+        private static void incomeProgram()
+        {
+            //income program  S
             Console.WriteLine("income comparison program");
             Console.WriteLine("person 1 details:");
             Console.WriteLine("enter hourly income:");
             string person1Rate = Console.ReadLine();
             Console.WriteLine("enter hours worked per week:");
-            string person1Hours = Console.ReadLine(); 
+            string person1Hours = Console.ReadLine();
             decimal person1Salary = Convert.ToDecimal(person1Hours) * Convert.ToDecimal(person1Rate);
             //person 2
             Console.WriteLine("person 2 details:");
@@ -32,12 +83,12 @@ namespace VariablesDataTypes
             Console.WriteLine("Person 1 Salary: " + person1Salary);
             Console.WriteLine("Person 2 Salary: " + person2Salary);
             //end of program
-            Console.WriteLine((person1Salary>person2Salary ? "First Person" : "Second Person") + " Makes More.");
+            Console.WriteLine((person1Salary > person2Salary ? "First Person" : "Second Person") + " Makes More. Press Enter to close this window.");
             Console.ReadLine();
+        }
 
 
-
-            ////basic operations
+            ////basic operations O
             //Console.WriteLine("Input a number to multiply by 50");
             ////combined read and write onto one line:
             //Console.WriteLine(Convert.ToInt32(Console.ReadLine()) * 50);
@@ -53,7 +104,7 @@ namespace VariablesDataTypes
             //Console.WriteLine("thats all");
             //Console.ReadLine();
 
-            ////Some math
+            ////Some math M
             //Console.WriteLine("6 + 2 = " + (6 + 2));
             //Console.WriteLine("6 - 2 = " + (6 - 2));
             //Console.WriteLine("6 x 2 = " + (6 * 2));
@@ -62,7 +113,7 @@ namespace VariablesDataTypes
             //Console.WriteLine(product);
 
 
-            ////DAILY REPORT PROMPTS
+            ////DAILY REPORT PROMPTS D
             //Console.WriteLine("The Tech Academy");
             //Console.WriteLine("Student Daily Report");
             //Console.WriteLine("Enter Name:");
@@ -85,6 +136,6 @@ namespace VariablesDataTypes
             //Console.ReadLine();
 
 
-        }
-    }
+
+        } //end class Program
 }
